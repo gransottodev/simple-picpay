@@ -25,7 +25,7 @@ model Users {
 }
 
 model Transactions {
-  id        String   @id @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   payer     String
   receiver  String
   value     Int
