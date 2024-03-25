@@ -1,7 +1,18 @@
-import { Injectable } from "@nestjs/common";
-import { UserProps } from "../entities/user/user";
+import { User } from "../entities/user/user";
 
-@Injectable()
+export interface UserResponseProps {
+  id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  userType: string;
+  balance: number
+}
+
 export abstract class UserRepository {
-  abstract createUser(data: UserProps) : Promise<UserProps>
+  abstract createUser(data: User): Promise<UserResponseProps>
+  abstract findUserByEmail(email: string): Promise<UserResponseProps>
+  abstract findUserByDocument(document: string): Promise<UserResponseProps>
+  abstract findUsers(): Promise<UserResponseProps[]>
 }
